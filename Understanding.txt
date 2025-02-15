@@ -1,0 +1,17 @@
+GITHUB README EXPLANATION:
+
+# - Heading
+**Walaa** - Bold
+*Walaa* - Italic
+- Walaa - Bullets
+
+Initializing Git Repository:
+git init - Initalising Empty Repository
+
+git add . - Adding all my files in Github
+
+git commit -m "Any text you wish" - All my files are committed to github with an initial message.
+
+git remote add origin "You need to paste your Github repository link here" - Adding a remote origin and making sure we push all the files in it.
+
+git remote -v - Chcecking is my remote origin created . It will show me Fetch(Used to clone or take my code) and Push(I can push my code into github).
