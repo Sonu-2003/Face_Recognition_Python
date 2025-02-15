@@ -1,0 +1,9 @@
+GITHUB README EXPLANATION:
+
+# - Heading
+**Walaa** - Bold
+*Walaa* - Italic
+- Walaa - Bullets
+
+Initializing Git Repository:
+git init - Initalising Empty Repository
