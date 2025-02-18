@@ -38,11 +38,23 @@ def check_haarscas():
         mess._show(title="Hey,My Haarscascade File is not available", message="Please contact us for any issues ")
         window.destroy() 
 
+
+#I will be showing you how to scan and test whether my image is registered in the database. If it's not, it will prompt the admin for changing password
 def save_pass():
     assure_path_exists("TrainingImageLabel/")
-    existing=os.path.isFile("TrainingImageLabel/")
+    existing=os.path.isFile("TrainingImageLabel\password.txt")
     if existing:
-        tf=open("TrainingImageLabel","r")
+        tf=open("TrainingImageLabel\password.txt","r")
         key=tf.read()
     else:
         master.destroy()
+        new_pass=tsd.askstring("Old password is not available",'Please enter a new password',show="*")
+        if new_pass==None:
+            mess._show(title="No Password entered", message ='Password not set!! Please Try again')
+        else:
+            tf=open("TrainingImageLabel\password.txt","w")
+            tf.write(new_pass)
+            mess._show(title='New Password Registered', message="Hey!!New Password registered Successfully!!")
+            return
+        
+        
