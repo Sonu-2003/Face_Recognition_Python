@@ -17,11 +17,32 @@ def assure_path_exists(path):
     if not os.path.exists(d):
         os.makedirs(d)
 
-#1:07:67 Tuesday: This implements The real time to my system and it will update after 200 milliseconds
+#1:07:67 Tuesday: This implements The real time clock to my system and it will update after 100 milliseconds
 def tick():
     time_string= time.strftime('%H:%M:%S')
     clock.config(text=time_string)
     clock.after(100,tick)
 
+#Users can contact us through thid message box
+
+def contact():
+    mess._show(title="Contact me", message="You can contact us at: swarnava2003.sonu@gmail.com")
+
 #haarcascadeFile - It is a XML file that vasically ensures that my face recognition model is working with the proper coordinates of each face
 
+def check_haarscas():
+    exists=os.path.isFile("haarcascade_frontalface_default.xml")
+    if exists:
+        pass
+    else:
+        mess._show(title="Hey,My Haarscascade File is not available", message="Please contact us for any issues ")
+        window.destroy() 
+
+def save_pass():
+    assure_path_exists("TrainingImageLabel/")
+    existing=os.path.isFile("TrainingImageLabel/")
+    if existing:
+        tf=open("TrainingImageLabel","r")
+        key=tf.read()
+    else:
+        master.destroy()
