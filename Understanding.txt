@@ -15,3 +15,4 @@ git commit -m "Any text you wish" - All my files are committed to github with an
 git remote add origin "You need to paste your Github repository link here" - Adding a remote origin and making sure we push all the files in it.
 
 git remote -v - Chcecking is my remote origin created . It will show me Fetch(Used to clone or take my code) and Push(I can push my code into github).
+- test push
