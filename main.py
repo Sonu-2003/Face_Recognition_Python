@@ -85,6 +85,76 @@ def change_pass():
     lbl.pack()
     global old
     old=tk.Entry(m,width="25", fg="black", relief="solid", font=('times',12,'bold'),show="*")
+    old.pack()
+    lbl5=tk.Label(m,text=' Enter Your Password  ', bg='white', font=('times',12,'bold'))
+    lbl5.pack()
+    global new
+    new=tk.Entry(m,width="25", fg="black", relief="solid", font=('times',12,'bold'),show="*")
+    new.pack()
+    lbl6=tk.Label(m,text=' Enter your new Password  ', bg='white', font=('times',12,'bold'))
+    lbl6.pack()
+    global nnew
+    nnew=tk.Entry(m,width="25", fg="black", relief="solid", font=('times',12,'bold'),show="*")
+    nnew.pack()
+    lbl7=tk.Label(m,text=' Confirm your new Password  ', bg='white', font=('times',12,'bold'))
+    lbl7.pack()
     
-        
-        
+    m.mainloop()
+    
+#Let's create date and time
+global key
+key=''
+ts=time.time()
+date=datetime.datetime.fromtimestamp(ts).strftime('%d-%m-%Y')
+day,month,year=date.split("-")
+
+mont={'01':'January',
+      '02':'February',
+      '03':'March',
+      '04':'April',
+      '05':'May',
+      '06':'June',
+      '07':'July',
+      '08':'August',
+      '09':'September',
+      '10':'October',
+      '11':'November',
+      '12':'December'
+      }
+#GUI-FRONTEND
+
+window=tk.Tk()
+window.geometry("1280x720")
+window.resizable(True,False)
+window.title("Attendance System")
+window.configure(background="#262523")
+      
+frame1=tk.Frame(window,bg="#00aeff")
+frame1.place(relx=0.11,rely=0.17,relwidth=0.39,relheight=0.80)
+
+frame2=tk.Frame(window,bg="#00aeff")
+frame2.place(relx=0.51,rely=0.17,relwidth=0.39,relheight=0.80)
+
+message3=tk.Label(window,text="Face Recognition Based Attendance System", fg="white",bg="#262523" , width=55,height=1,font=('times',29,'bold'))
+message3.pack()
+
+frame3=tk.Frame(window,bg="#c4c6ce")
+frame3.place(relx=0.52,rely=0.09,relwidth=0.09,relheight=0.07)
+
+frame4=tk.Frame(window,bg="#c4c6ce")
+frame4.place(relx=0.37,rely=0.09,relwidth=0.16,relheight=0.07)
+
+
+
+datef=tk.Label(frame4,text= day+"-"+mont[month]+"-"+year+"  |  ",fg="orange",bg="#262523", width=55, height=1,font=('times',22,'bold'))
+datef.pack(fill='both',expand=1)
+
+clock=tk.Label(frame3,fg="orange",bg="#262523",width=55,height=1,font=('times',22,'bold'))
+clock.pack(fill='both',expand=1)
+tick()
+
+head2=tk.Label(frame2,text="  For New Registrations  ",fg="black",bg="#3ece48", font=('times',17,'bold'))
+head2.grid(row=0,column=0)
+
+head1=tk.Label(frame1,text="  For Already Registered   ",fg="black",bg="#3ece48", font=('times',17,'bold'))
+head1.place(x=0,y=0)
