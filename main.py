@@ -43,17 +43,17 @@ def check_haarscas():
 #I will be showing you how to scan and test whether my image is registered in the database. If it's not, it will prompt the admin for changing password
 def save_pass():
     assure_path_exists("TrainingImageLabel/")
-    existing=os.path.isfile("TrainingImageLabel\password.txt")
+    existing=os.path.isfile("TrainingImageLabel/password.txt")
     if existing:
-        tf=open("TrainingImageLabel\password.txt","r")
+        tf=open("TrainingImageLabel/password.txt","r")
         key=tf.read()
     else:
-        master.destroy()
+        m.destroy()
         new_pass=tsd.askstring("Old password is not available",'Please enter a new password',show="*")
         if new_pass==None:
             mess._show(title="No Password entered", message ='Password not set!! Please Try again')
         else:
-            tf=open("TrainingImageLabel\password.txt","w")
+            tf=open("TrainingImageLabel/password.txt","w")
             tf.write(new_pass)
             mess._show(title='New Password Registered', message="Hey!!New Password registered Successfully!!")
             return
@@ -62,7 +62,7 @@ def save_pass():
     nnewp=(nnew.get())
     if(op==key):
         if(newp==nnewp):
-            txf=open("TrainingImageLabel\password.txt","w")
+            txf=open("TrainingImageLabel/password.txt","w")
             txf.write(newp)
         else:
             mess._show(title="Error", message="Hey! Confirm me the new password")
@@ -71,7 +71,7 @@ def save_pass():
         mess._show(title="Wrong Password", message="Please enter your correct password")
         return
     mess._show(title="Password changed", message="Hey! Password changed successfully")
-    master.destroy()
+    m.destroy()
     
     #In the above code, we are actually Trying to set up a new password and check if the new password is matching with the new password comfirmation.abs
 def change_pass():
@@ -98,6 +98,12 @@ def change_pass():
     nnew.pack()
     lbl7=tk.Label(m,text=' Confirm your new Password  ', bg='white', font=('times',12,'bold'))
     lbl7.pack()
+    nnew = tk.Entry(m, width=25, fg="black", relief='solid',font=('times', 12, ' bold '),show='*')
+    nnew.place(x=180, y=80)
+    cancel=tk.Button(m,text="Cancel", command=m.destroy ,fg="black"  ,bg="red" ,height=1,width=25 , activebackground = "white" ,font=('times', 10, ' bold '))
+    cancel.place(x=200, y=120)
+    save1 = tk.Button(m, text="Save", command=save_pass, fg="black", bg="#3ece48", height = 1,width=25, activebackground="white", font=('times', 10, ' bold '))
+    save1.place(x=10, y=120)
     
     m.mainloop()
     
