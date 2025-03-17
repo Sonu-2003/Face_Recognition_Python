@@ -106,6 +106,48 @@ def change_pass():
     save1.place(x=10, y=120)
     
     m.mainloop()
+
+#This is used for taking images and saving my profile.
+def clear():
+    txt.delete(0,'end')
+    res="1)Take Images  >>>  2)Save Profile"
+    message1.configure(text=res)
+    
+def TakeImages():
+    check_haarscas()
+    assure_path_exists("TrainingImageLabel/")
+    recognizer=cv2.face_LBPHFaceRecognizer.create()
+    harcascadePath= "haarcascade_frontface_default.xml"
+    detector = cv2.CascadeClassifier(harcascadePath)
+    faces, ID= getImagesAndLabels("TrainingImage")
+    
+    try:
+        recognizer.train(faces,np.array(ID))
+    except:
+        mess._show(title="No Registrations", message="Please Register Someone First!!")
+        return
+    recognizer.save("TrainingImageLabel/")
+    res="Profile Saved Successfully"
+    message1.configure(text=res)
+    message.configure(text="Total Registrations till now: "+ str(ID[0]))
+    
+def getImagesAndLabels(path):
+    imagePaths=[os.path.join(path,f) for f in os.listdir(path)]
+    
+    #creating  empty lists
+    faces=[]
+    Ids=[]
+    
+    #We will loop through the image paths and load the Ids and their corresponding Faces, Eg. 1) Walaa ; 2) Swarnava
+    for imagePath in imagePaths:
+        #load the face in the computer and convert it to gray scale
+        pilImage= Image.open(imagePath).convert('L')
+        
+        #Now we will convert PIL image into numpy array
+        imageNp=np.array(pilImage, 'uint32')
+        #uint8- Unique 8 Integers
+    
+
     
 #Let's create date and time
 global key
@@ -164,3 +206,5 @@ head2.grid(row=0,column=0)
 
 head1=tk.Label(frame1,text="  For Already Registered   ",fg="black",bg="#3ece48", font=('times',17,'bold'))
 head1.place(x=0,y=0)
+
+
